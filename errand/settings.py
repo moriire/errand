@@ -118,11 +118,7 @@ STATIC_ROOT = BASE_DIR/"static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL="user.User"
-LOGIN_REDIRECT_URL="/items/"
+LOGIN_REDIRECT_URL="/"
 LOGIN_URL = "/auth/login/"
+LOGOUT_REDIRECT_URL="/"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
