@@ -1,0 +1,48 @@
+<section id="home" class="service-section pt-150">	
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-8 col-xs-10 table-responsive card" style="height: 60vh;">
+               
+                <table class="table table-hovered table-bordered table-striped card-body">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Unit</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        {% if items %}
+                       
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.unit }}</td>
+                            <td class="text-right">
+                                <button class="btn btn-danger" unicorn:click="delItem({{item.id}})">delete</button>
+                            </td>      
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="2" class="text-center align-center">
+                                Total: {{ total_price }}
+                             </td>
+                            <td colspan="1" class="text-right">
+                                <button class="btn btn-primary" unicorn:click="$alert('hello')">Pay</button>
+                            </td>
+                            
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <h2 class="text-center">No Items in your cart <span> <a href="/items/" class="btn btn-primary">Create Order</a></span></h2>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+        
+    </div>
+</section>

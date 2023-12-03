@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load unicorn %}
+{% block content %}
+<h2>Checkout</h2>
+{% unicorn 'get_orders' %}
+{% endblock %}		

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+{% load unicorn %}
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Delivery - Home Delivery App Landing Page Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}"/>
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-5.0.0-alpha-2.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/LineIcons.2.0.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	{% unicorn_scripts %}
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+	  {% csrf_token %}
+    <!-- ========================= preloader start ========================= -->
+    <!--div class="preloader">
+      <div class="loader">
+        <div class="ytp-spinner">
+          <div class="ytp-spinner-container">
+            <div class="ytp-spinner-rotator">
+              <div class="ytp-spinner-left">
+                <div class="ytp-spinner-circle"></div>
+              </div>
+              <div class="ytp-spinner-right">
+                <div class="ytp-spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div-->
+		<!-- preloader end -->
+	
+	
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="/">
+                  <img src="{% static 'assets/img/logo/logo.svg' %}" alt="Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                  {% with request.resolver_match.url_name as url_name %}
+                  <ul id="nav" class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                      <a class="{% if url_name == 'home' %} active{% endif %}" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="{% if url_name == 'about' %} active{% endif %}" href="/about/">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="{% if url_name == 'services' %} active{% endif %}" href="/services/">Services</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll " href="#how">How It Works</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                      <a class="btn btn-link dropdown-toggle {% if url_name == 'items' or url_name == 'checkout' %} active{% endif %}"  data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="lni lni-cart"></i> <span>Cart</span>
+                      </a>
+                      <ul class="dropdown-menu p-3">
+                        <li><a class="dropdown-item {% if url_name == 'items' %} active{% endif %}" href="/items/">Create Orders</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/items/checkout/">Checkout Orders</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Orders History</a></li>
+                        
+                      </ul>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="btn btn-link dropdown-toggle {% if url_name == 'password_change' or url_name == 'profile' %} active{% endif %}"  data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="lni lni-user "></i> <span>Welcome</span>
+                      </a>
+                      <ul class="dropdown-menu p-3">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                      </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                      <a class="btn btn-link dropdown-toggle {% if url_name in "'login', 'signup', 'password_reset'" %} active{% endif %}"  data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="lni lni-user "></i> <span>Login</span>
+                      </a>
+                      <ul class="dropdown-menu p-3">
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'password_reset' %}" >Forgot Password</a></li>
+                      </ul>
+                    </li>
+                    {% endif %}
+                  </ul>
+                  {% endwith %}
+                </div>
+                <!-- Example single danger button -->
+
+                <!-- navbar collapse -->
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+
+
+    {% block content %}	{% endblock %}
+		
+    <!-- ========================= footer start ========================= -->
+    <footer id="footer" class="footer pt-20 pb-20 mt-4">
+			<div class="container">
+				<div class="row">
+          <div class="col-12 text-center py-2">
+            <p>Social Media handles will come here</p>
+          </div>
+          <div class="col-12 text-center py-2">
+            <p><a href="https://agesxpat.com.ng" style="color: #fff;" rel="nofollow">Acsolot Integrated Services</a> <span>&copy; 2023</span></p>
+          </div>
+				</div>
+			</div>
+		</footer>
+    <!-- ========================= footer end ========================= -->
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+   <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/count-up.min.js' %}"></script>
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>
